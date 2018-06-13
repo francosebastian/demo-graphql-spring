@@ -1,0 +1,36 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.francosebastian'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	runtime('org.hsqldb:hsqldb')
+	compileOnly('org.projectlombok:lombok')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	//Usado para soportar GraphQL
+	compile 'com.graphql-java:graphql-java:2018-06-13T01-43-44-50a2a13'
+	//Tengo que ver para que usar esto, en varios lados veo que lo recomiendan
+	compile 'com.graphql-java:graphql-java-tools:5.1.0'
+}
